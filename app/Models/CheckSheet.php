@@ -18,7 +18,7 @@ class CheckSheet extends Model
     
     public function labels()
     {
-        return $this->belongsToMany('App\Models\Label');
+        return $this->belongsToMany('App\Models\Label','label_check_sheet');
     }
     
 }

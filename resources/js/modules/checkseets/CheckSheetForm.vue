@@ -27,6 +27,13 @@
                                 </div>
                             </div>
 
+                            <ul class="list-inline">
+                                <li class="list-inline-item border border-primary p-1 m-2" v-for="label  in labels">
+                                    <input type="checkbox" :id="'label-'+label.id" v-model="form.labels" :value="label.id" />
+                                            <label :for="'label-'+label.id" class="mx-2"> {{ label.name }}</label>
+                                </li>
+                            </ul>
+
                             <div class="d-flex justify-content-between  mt-3">
                                 <div>
                                     <button type="submit" class="btn btn-primary" v-if="!disabled">Mentés </button>
@@ -52,7 +59,14 @@ import Swal from 'sweetalert2';
 
 export default {
     mounted() {
-       
+       axios.get(`labels`)
+            .then((response) => {
+                this.labels = response.data.data;
+                this.loaded = true;
+            })
+            .catch((error) => {
+                console.error(error);
+            });   
     },
     data() {
         return {
@@ -60,7 +74,9 @@ export default {
             form: {
                 job: '',
                 comment: '',
+                 labels: []
             },
+            labels: [],
             errors: {}
         }
     },

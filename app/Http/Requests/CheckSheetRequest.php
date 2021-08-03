@@ -25,7 +25,9 @@ class CheckSheetRequest extends FormRequest
     {
         return [
             'comment' => ['nullable', 'string', 'max:5000'],
-            'job' => ['required', 'string', 'max:255']
+            'job' => ['required', 'string', 'max:255'],
+            'labels' => ['nullable', 'array'],
+            'labels.*' => ['exists:App\Models\Label,id']
         ];
     }
 }

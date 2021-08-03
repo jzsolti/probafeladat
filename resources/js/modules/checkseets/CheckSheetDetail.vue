@@ -19,6 +19,15 @@
                                 <li class="list-group-item">Munka megnevezése: {{ checksheet.job }}</li>
                                 <li class="list-group-item">Megjegyzés: {{ checksheet.comment }}</li>
                             </ul>
+
+                            <p class="border p-3">
+                                <h4>Címkék:</h4>
+                                <ul class="list-inline" v-if="checksheet.labels.length > 0">
+                                    <li class="list-inline-item border p-1 m-1" v-for="label  in checksheet.labels">
+                                        {{ label.name }}
+                                    </li>
+                                </ul>
+                            </p>
                         </div>
     
     

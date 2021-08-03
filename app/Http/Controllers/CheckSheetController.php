@@ -41,6 +41,10 @@ class CheckSheetController extends Controller
             'comment' => $request->input('comment')
         ]);
 
+        if ($request->labels) {
+            $checkSheet->labels()->attach($request->labels);
+        }
+
         try {
             //  email
          Mail::to($vehicle->owner_email)->send(new CheckSheetCreated($checkSheet));
@@ -55,6 +59,12 @@ class CheckSheetController extends Controller
     {
         if ($checkSheet->vehicle->user_id !== $request->user()->id) {
             abort(404);
+        }
+
+        if ($request->labels) {
+            $checkSheet->labels()->sync($request->labels);
+        } else {
+            $checkSheet->labels()->detach();
         }
 
         $checkSheet->update([

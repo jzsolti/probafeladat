@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\LabelResource;
 
 class CheckSheetResource extends JsonResource
 {
@@ -19,7 +20,8 @@ class CheckSheetResource extends JsonResource
             'vehicle_id' => $this->vehicle_id,
             'vehicle_name' => $this->vehicle_name,
             'job' =>  $this->job,
-            'comment' =>  $this->comment
+            'comment' =>  $this->comment,
+            'labels' => LabelResource::collection( $this->labels )
         ];
     }
 }
