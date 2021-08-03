@@ -39,8 +39,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::prefix('labels')->group(function () {
         Route::get('/', 'App\Http\Controllers\LabelController@index');
-        Route::post('/create/{vehicle}', 'App\Http\Controllers\LabelController@create');
-        Route::delete('/{checkSheet}', 'App\Http\Controllers\LabelController@delete');
+        Route::post('/create', 'App\Http\Controllers\LabelController@create');
+        Route::delete('/{label}', 'App\Http\Controllers\LabelController@delete');
     });
 
 

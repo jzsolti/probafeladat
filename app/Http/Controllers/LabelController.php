@@ -20,7 +20,7 @@ class LabelController extends Controller
         ]);
 
         $label = Label::create(['name' =>  $request->input('name')]);
-        return response(['id' => $label->id]);
+        return response(['label' => new LabelResource($label) ]);
     }
 
     public function delete(Request $request, Label $label)
