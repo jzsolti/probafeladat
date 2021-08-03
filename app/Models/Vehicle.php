@@ -13,7 +13,11 @@ class Vehicle extends Model
 
     protected $guarded = ['id'];
 
-    public function vehicles(){
+    public function user(){
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function checkSeets(){
+        return $this->hasMany('App\Models\CheckSheet');
     }
 }

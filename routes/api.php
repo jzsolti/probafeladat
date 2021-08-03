@@ -28,4 +28,12 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/{vehicle}', 'App\Http\Controllers\VehicleController@update');
         Route::delete('/{vehicle}', 'App\Http\Controllers\VehicleController@delete');
     });
+
+    Route::prefix('checksheets')->group(function () {
+        Route::get('/', 'App\Http\Controllers\CheckSheetController@index');
+        Route::get('{checkSheet}', 'App\Http\Controllers\CheckSheetController@show');
+        Route::post('/create/{vehicle}', 'App\Http\Controllers\CheckSheetController@create');
+        Route::put('/{checkSheet}', 'App\Http\Controllers\CheckSheetController@update');
+        Route::delete('/{checkSheet}', 'App\Http\Controllers\CheckSheetController@delete');
+    });
 });

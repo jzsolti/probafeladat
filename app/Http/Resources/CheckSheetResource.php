@@ -3,9 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\UserResource, App\Http\Resources\CheckSheetResource;
 
-class VehicleResource extends JsonResource
+class CheckSheetResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,10 +16,10 @@ class VehicleResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user' =>  new UserResource($this->user),
-            'name' => $this->name,
-            'owner_email' => $this->owner_email,
-            'check_sheets' => CheckSheetResource::collection( $this->checkSeets ),
+            'vehicle_id' => $this->vehicle_id,
+            'vehicle_name' => $this->vehicle_name,
+            'job' =>  $this->job,
+            'comment' =>  $this->comment
         ];
     }
 }

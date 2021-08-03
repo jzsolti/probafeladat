@@ -3,6 +3,8 @@ import Dashboard from './modules/Dashboard.vue';
 import Vehicles from './modules/vehicles/Vehicles.vue';
 import VehicleForm from './modules/vehicles/VehicleForm.vue';
 import VehicleDetails from './modules/vehicles/VehicleDetails.vue';
+import CheckSheetForm from './modules/checkseets/CheckSheetForm.vue';
+import CheckSheetDetail from './modules/checkseets/CheckSheetDetail.vue';
 
 
 import Login from './auth/Login.vue';
@@ -62,6 +64,24 @@ const routes = [
         name: 'vehicles-details',
         path: '/vehicles/edit/:id',
         component: VehicleDetails,
+        beforeEnter: (to, from, next) => {
+            if (!store.state.isAuthenticated) next({ name: 'login' })
+            else next()
+        }
+    },
+    {
+        name: 'check-sheet-create',
+        path: '/check-sheets/create/:vehicleId',
+        component: CheckSheetForm,
+        beforeEnter: (to, from, next) => {
+            if (!store.state.isAuthenticated) next({ name: 'login' })
+            else next()
+        }
+    },
+    {
+        name: 'check-sheet-details',
+        path: '/check-sheets/:checkSheetId',
+        component: CheckSheetDetail,
         beforeEnter: (to, from, next) => {
             if (!store.state.isAuthenticated) next({ name: 'login' })
             else next()
