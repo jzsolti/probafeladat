@@ -1,5 +1,10 @@
 import { createWebHistory, createRouter } from "vue-router";
 import Dashboard from './modules/Dashboard.vue';
+import Vehicles from './modules/vehicles/Vehicles.vue';
+import VehicleForm from './modules/vehicles/VehicleForm.vue';
+import VehicleDetails from './modules/vehicles/VehicleDetails.vue';
+
+
 import Login from './auth/Login.vue';
 import Logout from './auth/Logout.vue';
 import NotFound from './components/NotFound.vue';
@@ -30,6 +35,33 @@ const routes = [
         name: 'dashboard',
         path: '/',
         component: Dashboard,
+        beforeEnter: (to, from, next) => {
+            if (!store.state.isAuthenticated) next({ name: 'login' })
+            else next()
+        }
+    },
+    {
+        name: 'vehicles',
+        path: '/vehicles',
+        component: Vehicles,
+        beforeEnter: (to, from, next) => {
+            if (!store.state.isAuthenticated) next({ name: 'login' })
+            else next()
+        }
+    },
+    {
+        name: 'vehicles-create',
+        path: '/vehicles/create',
+        component: VehicleForm,
+        beforeEnter: (to, from, next) => {
+            if (!store.state.isAuthenticated) next({ name: 'login' })
+            else next()
+        }
+    },
+    {
+        name: 'vehicles-details',
+        path: '/vehicles/edit/:id',
+        component: VehicleDetails,
         beforeEnter: (to, from, next) => {
             if (!store.state.isAuthenticated) next({ name: 'login' })
             else next()

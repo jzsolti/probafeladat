@@ -12,9 +12,12 @@
                             <li class="nav-item" v-if="this.$store.state.isAuthenticated">
                                 <router-link to="/" class="nav-item nav-link">Dashboard</router-link>
                             </li>
+                            <li class="nav-item" v-if="this.$store.state.isAuthenticated">
+                                <router-link to="/vehicles" class="nav-item nav-link">Járművek</router-link>
+                            </li>
                             
                             <li class="nav-item" v-if="this.$store.state.isAuthenticated">
-                               <router-link to="/logout" class="nav-item nav-link">Logout</router-link>
+                               <router-link to="/logout" class="nav-item nav-link">Kilépés</router-link>
                             </li>
     
                         </ul>

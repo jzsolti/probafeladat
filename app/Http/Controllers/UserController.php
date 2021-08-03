@@ -21,5 +21,9 @@ class UserController extends Controller
         return response($user->only('name', 'email'));
     }
 
+    public function vehicles(){
+        return $this->hasMany('App\Models\Vehicle');
+    }
+
     
 }

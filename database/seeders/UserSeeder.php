@@ -21,7 +21,5 @@ class UserSeeder extends Seeder
         for($i = 0; $i < 10; $i++){
             User::create(['name' => $faker->name,'email'=> $faker->companyEmail,'password' => Hash::make('asdf1234')]);
         }
-
-       
     }
 }
