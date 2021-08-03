@@ -25,7 +25,9 @@ class VehicleRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'owner_email' => ['required', 'email', 'max:255']
+            'owner_email' => ['required', 'email', 'max:255'],
+            'labels' => ['nullable', 'array'],
+            'labels.*' => ['exists:App\Models\Label,id']
         ];
     }
 }

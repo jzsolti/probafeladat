@@ -9,7 +9,8 @@ use App\Models\Vehicle;
 
 class VehicleController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         return VehicleResource::collection(Vehicle::orderBy('name')->where('user_id', $request->user()->id)->get());
     }
 
@@ -25,6 +26,11 @@ class VehicleController extends Controller
             'name' => $request->input('name'),
             'owner_email' => $request->input('owner_email'),
         ]);
+
+        if ($request->labels) {
+            $vehicle->labels()->attach($request->labels);
+        }
+
         return response(['id' => $vehicle->id]);
     }
 
@@ -37,7 +43,13 @@ class VehicleController extends Controller
         $vehicle->update([
             'name' => $request->input('name'),
             'owner_email' => $request->input('owner_email')
-    ]);
+        ]);
+
+        if ($request->labels) {
+            $vehicle->labels()->sync($request->labels);
+        } else {
+            $vehicle->labels()->detach();
+        }
         return response(['updated' => true]);
     }
 

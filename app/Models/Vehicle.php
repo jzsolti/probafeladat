@@ -20,4 +20,9 @@ class Vehicle extends Model
     public function checkSeets(){
         return $this->hasMany('App\Models\CheckSheet');
     }
+
+    public function labels()
+    {
+        return $this->belongsToMany('App\Models\Label');
+    }
 }

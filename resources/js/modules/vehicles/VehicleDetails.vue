@@ -4,18 +4,24 @@
             <div class="col-md-8">
     
                 <div class="card">
-                    <div class="card-header">Adatlap </div>
+                    <div class="card-header">Jármű adatlap </div>
     
                     <div class="card-body">
 
                         <Loading size="3" v-if="!loaded" />
-
                         <div v-else>
                             <p>Jármű Név: {{vehicle.name}}</p>
                              <p>Tulaj. email: {{vehicle.owner_email}}</p>
+ <p class="border p-3">
+ <h4>Címkék:</h4>
+                               <ul class="list-inline" v-if="vehicle.labels.length > 0">
+                                <li class="list-inline-item border p-1 m-1" v-for="label  in vehicle.labels">
+                                    {{ label.name }}
+                                </li>
+                            </ul>
+ </p>
+                             
                         </div>
-
-    
                     </div>
                 </div>
 

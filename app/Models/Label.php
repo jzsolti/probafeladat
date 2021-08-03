@@ -6,19 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CheckSheet extends Model
+class Label extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
 
-    public function vehicle(){
-        return $this->belongsTo('App\Models\Vehicle');
-    }
-    
-    public function labels()
+    public function vehicles()
     {
-        return $this->belongsToMany('App\Models\Label');
+        return $this->belongsToMany('App\Models\Vehicle');
     }
-    
+
+    public function checkSheets()
+    {
+        return $this->belongsToMany('App\Models\CheckSheet');
+    }
 }
