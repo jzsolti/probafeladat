@@ -20,7 +20,7 @@ Route::post('logout', 'App\Http\Controllers\SpaAuth\LoginController@logout');
 Route::post('user/status', 'App\Http\Controllers\SpaAuth\LoginController@loggedIn');
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    
+
     Route::prefix('user/vehicles')->group(function () {
         Route::get('/', 'App\Http\Controllers\VehicleController@index');
         Route::get('/{vehicle}', 'App\Http\Controllers\VehicleController@show');

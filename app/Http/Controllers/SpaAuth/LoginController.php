@@ -24,7 +24,6 @@ class LoginController extends Controller
         if (Auth::guard()->attempt(['email' => $credentials['email'], 'password' => $credentials['password']])) {
            
            $response = ['logged_in' => 1];
-            $user = Auth::user();
 
 
             $request->session()->regenerate();
